@@ -2,8 +2,6 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { Company } from '../../db/models';
 
-const SECRET_KEY = 'MikelEsUnMariquita';
-
 export default {
   Query: {
     company: (parent, args, context) => Company.findById(args.id),
@@ -18,7 +16,7 @@ export default {
         throw new Error('TODO: Handle incorrect password');
       }
 
-      const token = jwt.sign(company.id, SECRET_KEY);
+      const token = jwt.sign(company.id, process.env.SECRET);
 
       return { company, token };
     },
@@ -28,7 +26,7 @@ export default {
 
       // TODO: Handle errors
 
-      const token = jwt.sign(company.id, SECRET_KEY);
+      const token = jwt.sign(company.id, process.env.SECRET);
 
       return { company, token };
     },

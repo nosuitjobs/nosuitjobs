@@ -14,6 +14,7 @@
     "body-parser": "^1.18.2",
     "dataloader": "^1.4.0",
     "debug": "^3.1.0",
+    "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "graphql": "^0.13.2",
     "graphql-tools": "^3.0.0",
@@ -34,7 +35,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "dev:api": "NODE_ENV=development DEBUG=strange* nodemon --exec babel-node ./server/api --watch ./server/api",
+    "dev:api": "NODE_ENV=development DEBUG=api* nodemon --exec babel-node ./server/api --watch ./server/api",
     "dev:strange": "NODE_ENV=development DEBUG=strange* nodemon --exec babel-node ./server/strange --watch ./server/strange",
     "db:migrate": "rethinkdb-migrate up -f ./server/api/db/config",
     "db:seed": "NODE_ENV=development DEBUG=api:seed* babel-node ./server/api/db/seed",
