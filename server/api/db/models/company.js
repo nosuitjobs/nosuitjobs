@@ -1,8 +1,9 @@
+import DataLoader from 'dataloader'
 import db from '../index';
 
 const TABLE = 'companies';
 
-const findById = id => (
+const findById = ids => (
   db
     .table(TABLE)
     .get(id)
@@ -14,6 +15,13 @@ const findById = id => (
     })
 )
 
+const findByIds = ids => (
+  db
+    .table(TABLE)
+    .getAll(...ids)
+    .run()
+)
+
 const findAll = () => (
   db
     .table(TABLE)
@@ -21,6 +29,7 @@ const findAll = () => (
 )
 
 export default {
-  findById,
-  findAll,
+  findById: findById,
+  findByIds: new DataLoader(findByIds),
+  findAll: new DataLoader(findAll),
 };
