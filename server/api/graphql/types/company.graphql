@@ -20,3 +20,12 @@ type Query {
   companies: [Company]
   company(id: ID!): Company
 }
+
+type Login {
+  company: Company!
+  token: String!
+}
+
+type Mutation {
+  login(email: String!, password: String!): Login
+}
