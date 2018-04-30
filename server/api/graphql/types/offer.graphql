@@ -1,6 +1,64 @@
+scalar JSON
+
 type Offer {
-  id: String!
-  title: String!
+  id: String
+  title: String
+  description: Description
+  perks: [Int]
+  teamDistribution: TeamDistribution
+  requirements: Requirements
+  recruitingSteps: [RecruitingStep]
+  workMethodology: JSON
+  technologies: [String]
+  workProfile: WorkProfile
+  culture: Culture
+  salary: String
+  location: String
+  votes: Int
+}
+
+type Description {
+  why: String,
+  looking: String,
+  other: String,
+}
+
+type TeamDistribution {
+  frontend: Int
+  backend: Int
+  devops: Int
+  sales: Int
+  design: Int
+}
+
+type Requirements {
+  responsabilities: [String]
+  requirements: [String]
+  nice_to_have: [String]
+}
+
+type RecruitingStep {
+  title: String
+  description: String
+  days: String
+}
+
+type WorkProfile {
+  newFeatures: Int
+  maintenance: Int
+  clientSupport: Int
+  documentWriting: Int
+  meetings: Int
+}
+
+type Culture {
+  perfomanceEvaluation: String
+  remoteWork: String
+  companyRetreat: String
+  teamRetreat: String
+  equippedSupplied: String
+  paidVacation: String
+  paidParentalLeave: String
 }
 
 type Query {
