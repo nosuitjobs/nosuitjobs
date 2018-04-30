@@ -3,6 +3,17 @@ import db from '../index';
 
 const TABLE = 'companies';
 
+const find = where => (
+  db
+    .table(TABLE)
+    .filter(where)
+    .limit(1)
+    .run()
+    .then(companies => {
+      return companies[0];
+    })
+)
+
 const findById = ids => (
   db
     .table(TABLE)
@@ -29,7 +40,8 @@ const findAll = () => (
 )
 
 export default {
-  findById: findById,
+  find,
+  findById,
   findByIds: new DataLoader(findByIds),
   findAll: new DataLoader(findAll),
 };
