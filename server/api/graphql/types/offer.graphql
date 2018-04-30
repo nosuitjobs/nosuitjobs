@@ -1,0 +1,9 @@
+type Offer {
+  id: String!
+  title: String!
+}
+
+type Query {
+  offers: [Offer]
+  offer(id: ID!): Offer
+}

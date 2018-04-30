@@ -1,0 +1,75 @@
+import faker from 'faker';
+import { v4 as uuid } from 'uuid';
+
+export default companyId => ({
+  id: uuid(),
+  companyId,
+  title: faker.lorem.sentence(),
+  description: {
+    why: faker.lorem.paragraph(),
+    looking: faker.lorem.paragraph(),
+    other: faker.lorem.paragraph(),
+  },
+  perks: [],
+  teamDistribution: {
+    frontend: faker.random.number(),
+    backend: faker.random.number(),
+    devops: faker.random.number(),
+    sales: faker.random.number(),
+    design: faker.random.number(),
+  },
+  requirements: {
+    responsabilities: faker.lorem.sentences(),
+    requirements: faker.lorem.sentences(),
+    nice_to_have: faker.lorem.sentences(),
+  },
+  recruitingSteps: [{
+    title: faker.random.words(),
+    description: faker.lorem.sentence(),
+    days: faker.random.number(30),
+  },
+  {
+    title: faker.random.words(),
+    description: faker.lorem.sentence(),
+    days: faker.random.number(30),
+  },
+  {
+    title: faker.random.words(),
+    description: faker.lorem.sentence(),
+    days: faker.random.number(30),
+  }],
+  workMethodology: {
+    dailyBuilds: faker.random.boolean(),
+    codeReview: faker.random.boolean(),
+    commitFirstDay: faker.random.boolean(),
+    bestTools: faker.random.boolean(),
+    qualityAssurance: faker.random.boolean(),
+    workConditions: faker.random.boolean(),
+    sourceControl: faker.random.boolean(),
+    issueTracker: faker.random.boolean(),
+    oneStepBuild: faker.random.boolean(),
+    bugsBeforeCode: faker.random.boolean(),
+    projectUp2h: faker.random.boolean(),
+    pairProgramming: faker.random.boolean(),
+  },
+  technologies: [faker.lorem.word(), faker.lorem.word(), faker.lorem.word()],
+  workProfile: {
+    newFeatures: 20,
+    maintenance: 20,
+    clientSupport: 20,
+    documentWriting: 20,
+    meetings: 20,
+  },
+  culture: {
+    perfomanceEvaluation: faker.lorem.sentence(),
+    remoteWork: faker.lorem.word(),
+    companyRetreat: faker.lorem.sentence(),
+    teamRetreat: faker.lorem.sentence(),
+    equippedSupplied: faker.lorem.sentence(),
+    paidVacation: faker.lorem.word(),
+    paidParentalLeave: faker.lorem.sentence(),
+  },
+  salary: faker.random.number(),
+  location: `${faker.address.city()} ${faker.address.country()}`,
+  votes: faker.random.number(),
+});
