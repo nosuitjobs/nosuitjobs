@@ -39,7 +39,16 @@ const findAll = () => (
     .run()
 )
 
+const create = args => (
+  db
+    .table(TABLE)
+    .insert(args, { returnChanges: true })
+    .run()
+    .then(result => result.changes[0].new_val)
+)
+
 export default {
+  create,
   find,
   findById,
   findByIds: new DataLoader(findByIds),
