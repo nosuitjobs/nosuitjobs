@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { Company } from '../../db/models';
 
-const SECRET_KEY = "RubenEsUnMariquita";
+const SECRET_KEY = 'MikelEsUnMariquita';
 
 export default {
   Query: {
@@ -11,9 +11,8 @@ export default {
   Mutation: {
     login: async (parent, args, context) => {
       const company = await Company.find(args);
-      console.log(company);
-      token = jwt.sign(company.id, SECRET_KEY);
-      console.log(token);
+      const token = jwt.sign(company.id, SECRET_KEY);
+
       return { company, token };
     },
   },
