@@ -1,0 +1,22 @@
+type Company {
+  id: String
+  name: String
+  email: String
+  employees: String
+  founded: Int
+  social: Social
+  url: String
+  logo: String
+}
+
+type Social {
+  twitter: String
+  facebook: String
+  instagram: String
+  medium: String
+}
+
+type Query {
+  companies: [Company]
+  company(id: ID!): Company
+}

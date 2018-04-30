@@ -1,16 +1,16 @@
 import db from '../index';
 
-const TABLE = 'offers';
+const TABLE = 'companies';
 
 const findById = id => (
   db
     .table(TABLE)
     .get(id)
     .run()
-    .then(offer => {
-      if (!offer || offer.deletedAt) return null;
+    .then(company => {
+      if (!company || company.deletedAt) return null;
 
-      return offer;
+      return company;
     })
 )
 
