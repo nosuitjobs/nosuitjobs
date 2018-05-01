@@ -29,4 +29,5 @@ type Login {
 type Mutation {
   login(email: String!, password: String!): Login
   register(email: String!, password: String!): Login
+  updateCompany(id: String!, name: String): Company
 }

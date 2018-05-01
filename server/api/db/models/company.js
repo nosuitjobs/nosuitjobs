@@ -19,11 +19,6 @@ const findById = ids => (
     .table(TABLE)
     .get(id)
     .run()
-    .then(company => {
-      if (!company || company.deletedAt) return null;
-
-      return company;
-    })
 )
 
 const findByIds = ids => (
@@ -33,24 +28,31 @@ const findByIds = ids => (
     .run()
 )
 
-const findAll = () => (
-  db
-    .table(TABLE)
-    .run()
-)
+const findOrCreate = args => {
+  const company = find({ email: args.email });
 
-const create = args => (
-  db
+  if (company) return company;
+
+  return db
     .table(TABLE)
     .insert(args, { returnChanges: true })
+    .run()
+    .then(result => result.changes[0].new_val)
+}
+
+const update = ({ id, ...data }) => (
+  db
+    .table(TABLE)
+    .get(id)
+    .update(data, { returnChanges: true })
     .run()
     .then(result => result.changes[0].new_val)
 )
 
 export default {
-  create,
   find,
   findById,
   findByIds: new DataLoader(findByIds),
-  findAll: new DataLoader(findAll),
+  findOrCreate,
+  update,
 };
