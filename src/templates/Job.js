@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class App extends Component {
+class Job extends Component {
   render() {
     return (
       <div>
-        Test
-        <Link to="/">Go to Home</Link>
+        Job 1
+        <Link to="/">Go to Jobs</Link>
       </div>
     );
   }
 }
 
-export default App;
+export default Job;
